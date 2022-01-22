@@ -1,0 +1,13 @@
+- name: haproxy configuration playbook
+  hosts: haproxy
+  become: yes
+  tasks: 
+    - name: installation
+      package:
+        name: haproxy
+    - template:
+        dest: "/etc/haproxy/haproxy.cfg"
+        src: "/home/alakhel/haproxy/haproxy.cfg"
+    - service: haproxy
+      state: restarted
+      
