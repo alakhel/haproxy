@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
   res.send("root");
 });
 app.get("/flatTeamPortal", (req, res) => {
-  res.send("flatTeamPortal");
+  res.status(200).send("flatTeamPortal" + req.socket.localAddress);
 });
 app.get("/hapinessAndEntertainement", (req, res) => {
   res.send("hapinessAndEntertainement");

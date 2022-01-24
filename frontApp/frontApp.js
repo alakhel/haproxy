@@ -14,7 +14,7 @@ app = {
     target.innerHTML = `<td><a href="" title="portal">Portal</a>
                         </td>
                         <td>/flatTeamPortal</td>
-                        <td>192.168.3.4</td>
+                        <td>${data}</td>
                         <td>reachable</td>
                         <td>
                         <button class="button is-info" onclick="app.getApi('/flatTeamPortal', app.update, 'flatTeamPortal')">

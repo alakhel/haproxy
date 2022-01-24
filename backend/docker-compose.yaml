@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  flatteamportal:
+    build:
+      context: ./
+    command: npm start
+    ports:
+      - "3000:3000"
+    restart: on-failure
+    container_name: flatTeamPortal
+    environment:
+      DEBUG: nodejs-docker-express:*
+  hapinessandentertainement:
+    build:
+      context: ./
+    command: npm start
+    ports:
+      - "4000:3000"
+    restart: on-failure
+    container_name: hapinessAndEntertainement
+    environment:
+      DEBUG: nodejs-docker-express:*
+  businessparteners:
+    build:
+      context: ./
+    command: npm start
+    ports:
+      - "4100:3000"
+    restart: on-failure
+    container_name: businessParteners
+    environment:
+      DEBUG: nodejs-docker-express:*
