@@ -1,0 +1,23 @@
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+const port = 3000;
+app.use(cors());
+
+app.get("/", (req, res) => {
+  res.send("root");
+});
+app.get("/flatTeamPortal", (req, res) => {
+  res.send("flatTeamPortal");
+});
+app.get("/hapinessAndEntertainement", (req, res) => {
+  res.send("hapinessAndEntertainement");
+});
+app.get("/businessParteners", (req, res) => {
+  res.send("businessParteners");
+});
+
+app.listen(port, () => {
+  console.log(`App listening on port ${port}`);
+});

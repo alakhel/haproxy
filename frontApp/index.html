@@ -1,0 +1,45 @@
+</html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ops Console</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="./frontApp.js"></script>
+  </head>
+  <body id="appRoot">
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        Ops Console
+      </h1>
+      <p class="subtitle">
+        <strong>--</strong>!
+      </p>
+      <div class="table-container">
+        <table class="table is-fullwidth">
+            <thead>
+                <tr>
+                  <th><abbr title="Position">Service name</abbr></th>
+                  <th>uri</th>
+                  <th><abbr title="Points">IP (served from)</abbr></th>
+                  <th>state</th>
+                  <th>#</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="flatTeamPortal">
+                  <td><a href="" title="portal">Portal</a>
+                  </td>
+                  <td>/flatTeamPortal</td>
+                  <td>192.168.3.3</td>
+                  <td>reachable</td>
+                  <td><button class="button is-info" onclick="app.getApi('/flatTeamPortal', app.update, 'flatTeamPortal')">Test</button></td>
+                </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+  </body>
+</html>
