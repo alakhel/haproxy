@@ -69,3 +69,11 @@
           path: /root/haproxy/backend/
         source: build
         state: present
+    - name: backendapp:v1.0
+      docker:
+        name: backendapp:v1.0
+        image: backendapp:v1.0
+        command: npm start
+        state: started
+        expose:
+        - 6379
