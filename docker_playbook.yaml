@@ -69,14 +69,7 @@
           path: /root/haproxy/backend/
         source: build
         state: present
-    - name: businessParteners
-      docker:
-        name: businessparteners
-        image: backendapp:v1.0
-        command: npm start
-        state: started
-        expose:
-        - 3000
+
     - name: flatTeamPortal
       docker:
         name: flatteamportal
@@ -88,6 +81,14 @@
     - name: hapinessAndEntertainement
       docker:
         name: hapinessandentertainement
+        image: backendapp:v1.0
+        command: npm start
+        state: started
+        expose:
+        - 3100
+    - name: businessParteners
+      docker:
+        name: businessparteners
         image: backendapp:v1.0
         command: npm start
         state: started
