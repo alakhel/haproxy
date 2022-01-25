@@ -84,7 +84,7 @@
         command: npm start
         state: started
         expose:
-        - 3000
+        - 3100
     - name: hapinessAndEntertainement
       docker:
         name: hapinessandentertainement
@@ -92,7 +92,7 @@
         command: npm start
         state: started
         expose:
-        - 3000
+        - 3200
     - name: frontapp
       docker:
         name: frontapp
