@@ -2,7 +2,7 @@
   hosts: docker-node
   become: yes
   tasks:
-    - name: installa dipendenze
+    - name: Dependencies Installation
       apt:
         name: "{{item}}"
         state: present
@@ -16,15 +16,15 @@
         - python3-pip
         - virtualenv
         - python3-setuptools
-    - name: aggiungi chiave GPG
+    - name: add link GPG
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
-    - name: aggiungi repository docker
+    - name: add docker to repository 
       apt_repository:
         repo: deb https://download.docker.com/linux/ubuntu bionic stable
         state: present
-    - name: installa docker
+    - name: Docker Installation
       apt:
         name: "{{item}}"
         state: latest
@@ -33,10 +33,10 @@
         - docker-ce
         - docker-ce-cli
         - containerd.io
-    - name: Install Docker Module for Python
+    - name: Docker Module for Python Installation
       pip:
         name: docker
-    - name: assicurati che docker sia attivo
+    - name: Start Docker
       service:
         name: docker
         state: started
@@ -48,7 +48,7 @@
         owner: root
         group: root
         mode: '0755'
-    - name: copy Dockerfile
+    - name: copy ProjectFolder
       copy:
         src: ./frontApp
         dest: /root/haproxy/frontApp
