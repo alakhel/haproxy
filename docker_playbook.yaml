@@ -51,7 +51,7 @@
     - name: copy Dockerfile
       copy:
         src: ./frontApp
-        dest: /root/dhaproxy/Dockerfile
+        dest: /root/haproxy/frontApp
         owner: root
         group: root
         mode: '0644'
@@ -60,4 +60,5 @@
         name: democontainer:v1.0
         build:
           path: /root/haproxy/frontApp
+          source: build
         state: present
