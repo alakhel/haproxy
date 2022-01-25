@@ -51,7 +51,7 @@
     - name: copy ProjectFolder
       copy:
         src: ./frontApp
-        dest: /root/haproxy/frontApp
+        dest: /root/haproxy/
         owner: root
         group: root
         mode: '0644'
