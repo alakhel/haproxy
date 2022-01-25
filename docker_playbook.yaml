@@ -13,6 +13,9 @@
         - curl
         - gnupg-agent
         - software-properties-common
+        - python3-pip
+        - virtualenv
+        - python3-setuptools
     - name: aggiungi chiave GPG
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
@@ -30,6 +33,9 @@
         - docker-ce
         - docker-ce-cli
         - containerd.io
+    - name: Install Docker Module for Python
+      pip:
+        name: docker
     - name: assicurati che docker sia attivo
       service:
         name: docker
@@ -54,5 +60,4 @@
         name: democontainer:v1.0
         build:
           path: /root/haproxy/frontApp
-          source: build
         state: present
