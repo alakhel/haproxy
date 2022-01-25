@@ -35,3 +35,24 @@
         name: docker
         state: started
         enabled: yes
+    - name: create build directory
+      file:
+        path: /root/haproxy
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+    - name: copy Dockerfile
+      copy:
+        src: ./frontApp
+        dest: /root/dhaproxy/Dockerfile
+        owner: root
+        group: root
+        mode: '0644'
+    - name: build container image
+      docker_image:
+        name: democontainer:v1.0
+        build:
+          path: /root/haproxy/frontApp
+          source: build
+        state: present
