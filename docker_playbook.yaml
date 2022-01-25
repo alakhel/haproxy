@@ -59,6 +59,6 @@
       docker_image:
         name: democontainer:v1.0
         build:
-          path: /root/haproxy/frontApp
+          path: /root/haproxy/frontApp/Dockerfile
           source: build
         state: present
