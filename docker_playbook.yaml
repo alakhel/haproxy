@@ -71,34 +71,39 @@
         state: present
 
     - name: flatTeamPortal
-      docker:
+      docker_container:
         name: flatteamportal
         image: backendapp:v1.0
         command: npm start
         state: started
         expose:
         - 3100
+        ports: 3100:3100
     - name: hapinessAndEntertainement
-      docker:
+      docker_container:
         name: hapinessandentertainement
         image: backendapp:v1.0
         command: npm start
         state: started
         expose:
         - 3100
+        ports: 3100:3100
     - name: businessParteners
-      docker:
+      docker_container:
         name: businessparteners
         image: backendapp:v1.0
         command: npm start
         state: started
         expose:
         - 3200
+        ports: 3200:3200
     - name: frontapp
-      docker:
+      docker_container:
         name: frontapp
         image: frontapp:v1.0
         command: npm start
         state: started
         expose:
-        - 4000
+        - 80
+        ports: 80:80
+        
