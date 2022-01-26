@@ -76,27 +76,21 @@
         image: backendapp:v1.0
         command: npm start
         state: started
-        expose:
-        - 3100
-        ports: 3100:3100
+        ports: 3100:3000
     - name: hapinessAndEntertainement
       docker_container:
         name: hapinessandentertainement
         image: backendapp:v1.0
         command: npm start
         state: started
-        expose:
-        - 3100
-        ports: 3100:3100
+        ports: 3100:3000
     - name: businessParteners
       docker_container:
         name: businessparteners
         image: backendapp:v1.0
         command: npm start
         state: started
-        expose:
-        - 3200
-        ports: 3200:3200
+        ports: 3200:3000
     - name: frontapp
       docker_container:
         name: frontapp
