@@ -76,7 +76,7 @@
         image: backendapp:v1.0
         command: npm start
         state: started
-        ports: 3100:3000
+        ports: 3000:3000
     - name: hapinessAndEntertainement
       docker_container:
         name: hapinessandentertainement
