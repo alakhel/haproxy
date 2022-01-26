@@ -24,14 +24,13 @@ app = {
   },
   getApi(url, action, zone) {
     var myHeaders = new Headers();
-    myHeaders.set("Origin", "http://127:0:0:2");
     const options = {
       method: "GET",
       headers: myHeaders,
       mode: "cors",
       cache: "default",
     };
-    fetch(`http://127.0.0.1:3000${url}`, options, zone)
+    fetch(`http://srv.lakhel.com${url}`, options, zone)
       .then((response) => response.text())
       .then((data) => {
         console.log(data);
