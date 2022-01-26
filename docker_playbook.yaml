@@ -95,9 +95,6 @@
       docker_container:
         name: frontapp
         image: frontapp:v1.0
-        command: npm start
         state: started
-        expose:
-        - 80
         ports: 80:80
         
