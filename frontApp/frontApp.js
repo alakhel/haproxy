@@ -30,7 +30,7 @@ app = {
       mode: "cors",
       cache: "default",
     };
-    fetch(`http://srv.lakhel.com${url}`, options, zone)
+    fetch(`http://web.corp.net${url}`, options, zone)
       .then((response) => response.text())
       .then((data) => {
         console.log(data);
