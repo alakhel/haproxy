@@ -6,21 +6,43 @@ function go() {
 
 app = {
   appRoot: null,
+  serversState: {
+    "/flatTeamPortal": { response: "none", text: "" },
+    "/hapinessAndEntertainement": { response: "none", text: "" },
+    "/businessParteners": { response: "none", text: "" },
+  },
   init() {
     this.appRoot = document.getElementById("appRoot");
+    this.initTable();
   },
-  update(data, zone) {
-    target = document.getElementById(zone);
-    target.innerHTML = `<td><a href="" title="portal">Portal</a>
+  initTable() {
+    target = document.getElementById("servers-tables");
+    serversStateArr = Object.entries(this.serversState);
+    console.log(serversStateArr);
+    target.innerHTML = ``;
+    serversStateArr.map((v, i) => {
+      target.innerHTML += `
+                 <tr id="${v[0]}">
+                        <td><a href="" title="portal">${v[0].slice(1)}</a>
                         </td>
-                        <td>/flatTeamPortal</td>
-                        <td>${data}</td>
-                        <td>reachable</td>
+                        <td>${v[0]}</td>
+                        <td>${v[1].text}</td>
+                        <td>${v[1].response}</td>
                         <td>
-                        <button class="button is-info" onclick="app.getApi('/flatTeamPortal', app.update, 'flatTeamPortal')">
+                        <button class="button is-info" onclick="app.getApi('${
+                          v[0]
+                        }', app.update, '${v[0]}')">
                         Test
                         </button>
-                        </td>`;
+                        </td>
+                  </tr>
+                        `;
+    });
+  },
+  update(data, zone) {
+    console.table(data);
+    console.log(app.serversState[zone].response);
+    app.initTable();
   },
   getApi(url, action, zone) {
     var myHeaders = new Headers();
@@ -30,9 +52,16 @@ app = {
       mode: "cors",
       cache: "default",
     };
-    fetch(`http://web.corp.net${url}`, options, zone)
-      .then((response) => response.text())
+    const uri = `https://srv.lakhel.com${url}`;
+    console.log(uri);
+    fetch(uri, options, zone)
+      .then((response) => {
+        console.log(response);
+        app.serversState[zone].response = response.status;
+        return response.text();
+      })
       .then((data) => {
+        console.log("response :");
         console.log(data);
         action(data, zone);
       });

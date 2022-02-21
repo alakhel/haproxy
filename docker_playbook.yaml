@@ -1,5 +1,5 @@
 - name: Docker installation test
-  hosts: webservers
+  hosts: webservers-aws
   become: yes
   tasks:
     - name: Dependencies Installation
@@ -48,27 +48,31 @@
         owner: root
         group: root
         mode: '0755'
-    - name: copy ProjectFolder
-      copy:
+    - name: Synchronize passing in extra rsync options
+      synchronize:
         src: ./
         dest: /root/haproxy/
-        owner: root
-        group: root
-        mode: '0644'
-    - name: build container image
+        rsync_opts:
+          - "--no-motd"
+          - "--exclude=.git"
+    - name: build container image frontEnd
       docker_image:
         name: frontapp:v1.0
         build:
           path: /root/haproxy/frontApp/
         source: build
+        force_source: yes
         state: present
-    - name: build container image
+
+       
+    - name: build container image backend
       docker_image:
         name: backendapp:v1.0
         build:
           path: /root/haproxy/backend/
         source: build
         state: present
+        
 
     - name: flatTeamPortal
       docker_container:
@@ -77,6 +81,7 @@
         command: npm start
         state: started
         ports: 3000:3000
+        recreate: true
     - name: hapinessAndEntertainement
       docker_container:
         name: hapinessandentertainement
@@ -84,6 +89,7 @@
         command: npm start
         state: started
         ports: 3100:3000
+        recreate: true
     - name: businessParteners
       docker_container:
         name: businessparteners
@@ -91,10 +97,12 @@
         command: npm start
         state: started
         ports: 3200:3000
+        recreate: true
     - name: frontapp
       docker_container:
         name: frontapp
         image: frontapp:v1.0
         state: started
         ports: 80:80
+        recreate: true
         

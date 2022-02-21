@@ -24,18 +24,18 @@
                   <th><abbr title="Position">Service name</abbr></th>
                   <th>uri</th>
                   <th><abbr title="Points">IP (served from)</abbr></th>
-                  <th>state</th>
+                  <th>status</th>
                   <th>#</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr id="flatTeamPortal">
+              <tbody id="servers-tables">
+                <tr id="/flatTeamPortal">
                   <td><a href="" title="portal">Portal</a>
                   </td>
                   <td>/flatTeamPortal</td>
                   <td>192.168.3.3</td>
                   <td>reachable</td>
-                  <td><button class="button is-info" onclick="app.getApi('/flatTeamPortal', app.update, 'flatTeamPortal')">Test</button></td>
+                  <td><button class="button is-info" onclick="app.getApi('/flatTeamPortal', app.update, '/flatTeamPortal')">Test</button></td>
                 </tr>
         </table>
       </div>

@@ -1,14 +1,14 @@
 - name: haproxy configuration playbook
-  hosts: haproxy
+  hosts: haproxy-aws
   become: yes
   tasks: 
-    - name: installation
-      package:
-        name: haproxy
+#    - name: installation
+#      package:
+#        name: haproxy
     - template:
-        dest: "/etc/haproxy/haproxy.cfg"
-        src: "/home/alakhel/haproxy/haproxy.cfg"
+        dest: "/etc/hapee-2.4/hapee-lb.cfg"
+        src: "./haproxy.cfg"
     - service:
-        name: haproxy
-        state: restarted
+        name: hapee-2.4-lb
+        state: reloaded
 
